@@ -2,7 +2,7 @@
 A. Nama produk: UjuanKu (web)
 
 B. Deskripsi:
-       UJIANKU merupakan website yang dirancang untuk memudahkan guru dalam melaksanakan dan mengelola kegiatan ujian secara digital. Website ini dilengkapi dengan fitur anti curang (pendeteksi pelanggaran) untuk membantu meminimalkan tindakan kecurangan selama ujian berlangsung. Selain itu, UjianKu bertujuan menciptakan pelaksanaan ujian yang lebih efektif, tertib, praktis, dan transparan, sehingga guru dapat mengawasi jalannya ujian dengan lebih mudah serta meningkatkan kedisiplinan peserta didik.
+       UjianKu merupakan website yang dirancang untuk memudahkan guru dalam melaksanakan dan mengelola kegiatan ujian secara digital. Website ini dilengkapi dengan fitur anti curang (pendeteksi pelanggaran) untuk membantu meminimalkan tindakan kecurangan selama ujian berlangsung. Selain itu, UjianKu bertujuan menciptakan pelaksanaan ujian yang lebih efektif, tertib, praktis, dan transparan, sehingga guru dapat mengawasi jalannya ujian dengan lebih mudah serta meningkatkan kedisiplinan peserta didik.
 
 C. Teknologi
 Menggunakan HTML/CSS dan github sebagai publikasi.
