@@ -9,8 +9,9 @@
 
 # Tahap 4: Refleksi dan penjelasan kode
   Melalui bantuan AI pada tahap debugging dan generate kode, kami jadi memahami bahwa kita bisa:
-  1. menggunakan url "https://cdn.tailwindcss.com" untuk menulis kode CSS tanpa meninggalkan HTML
+  1. menggunakan url "https://cdn.tailwindcss.com" untuk menulis kode CSS tanpa meninggalkan HTML tapi kami melilih untuk membaginya ke style.css untuk menguji pengetahuan kami.
   2. menggunakan CloudFlare untuk menghasilkan web yang aman dan cepat
-  3. menambahkan animasi dalam <style>
-  4. melakukan pemindahan data ke excel, pdf, dan word melalui "fa-solid fa-file-excel", nama excel bisa diganti sesuai aplikasi kerja yang kita mau
+  3. menambahkan animasi dalam CSS
+  4. lebih mengenal github melalui pembuatan web ini.
+  5. menyatukan JS ke dalam HTML melalui <script>
 Dan ternyata membuat web yang dapat berfungsi dengan fitur yang kami inginkan lebih mudah dari yang kami kira
