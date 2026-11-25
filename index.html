@@ -21,6 +21,7 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+            overflow-x: hidden;
         }
         input, textarea, select {
             -webkit-user-select: text;
@@ -41,47 +42,52 @@
 
     <!-- ================= NAVBAR ================= -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-xs">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-[4rem] py-2 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 sm:w-9 sm:h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-xs shrink-0">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg text-slate-900 leading-tight">UjianKu <span class="text-xs font-semibold bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-md ml-1">v2.0</span></h1>
+                    <div class="flex items-center gap-1.5">
+                        <h1 class="font-bold text-base sm:text-lg text-slate-900 leading-tight">UjianKu</h1>
+                        <span id="cloud-sync-badge" class="text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200 px-1.5 py-0.5 rounded-md flex items-center gap-1">
+                            <i class="fa-solid fa-spinner fa-spin text-[9px]"></i> Sync
+                        </span>
+                    </div>
                     <p class="text-[11px] text-slate-500 font-medium tracking-wide hidden sm:block">Classroom & Secure Exam Portal</p>
                 </div>
             </div>
 
             <!-- Pengalih Mode Login -->
-            <div id="role-switcher" class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-                <button onclick="switchAuthRole('student')" id="tab-student" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-indigo-600 shadow-xs transition">
-                    <i class="fa-solid fa-user-graduate mr-1"></i> Portal Siswa
+            <div id="role-switcher" class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
+                <button onclick="switchAuthRole('student')" id="tab-student" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-indigo-600 shadow-xs transition">
+                    <i class="fa-solid fa-user-graduate mr-1"></i> Siswa
                 </button>
-                <button onclick="switchAuthRole('teacher')" id="tab-teacher" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
-                    <i class="fa-solid fa-chalkboard-user mr-1"></i> Portal Guru
+                <button onclick="switchAuthRole('teacher')" id="tab-teacher" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                    <i class="fa-solid fa-chalkboard-user mr-1"></i> Guru
                 </button>
             </div>
 
             <!-- Info Akun Login Aktif -->
-            <div id="logged-user-bar" class="hidden flex items-center gap-3">
-                <div class="text-right hidden sm:block">
-                    <p id="nav-user-name" class="text-xs font-bold text-slate-800">Nama Pengguna</p>
-                    <p id="nav-user-email" class="text-[11px] text-slate-500">email@sekolah.sch.id</p>
+            <div id="logged-user-bar" class="hidden flex items-center gap-2 sm:gap-3">
+                <div class="text-right">
+                    <p id="nav-user-name" class="text-xs font-bold text-slate-800 max-w-[120px] sm:max-w-none truncate">Nama Pengguna</p>
+                    <p id="nav-user-email" class="text-[10px] sm:text-[11px] text-slate-500 max-w-[120px] sm:max-w-none truncate">email@sekolah.sch.id</p>
                 </div>
-                <button onclick="logoutUser()" class="bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-200 transition">
-                    <i class="fa-solid fa-right-from-bracket mr-1"></i> Keluar
+                <button onclick="logoutUser()" class="bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-700 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-200 transition shrink-0">
+                    <i class="fa-solid fa-right-from-bracket sm:mr-1"></i> <span class="hidden sm:inline">Keluar</span>
                 </button>
             </div>
 
             <!-- Indikator Saat Ujian Berlangsung -->
-            <div id="exam-header-info" class="hidden flex items-center gap-3 sm:gap-5">
-                <div class="flex items-center gap-1.5 bg-rose-50 border border-rose-200 px-3 py-1.5 rounded-xl">
+            <div id="exam-header-info" class="hidden flex items-center gap-2 sm:gap-4 w-full sm:w-auto justify-end pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                <div class="flex items-center gap-1.5 bg-rose-50 border border-rose-200 px-2.5 py-1 rounded-xl">
                     <i class="fa-solid fa-triangle-exclamation text-rose-600 text-xs"></i>
                     <span class="text-xs font-semibold text-rose-700">Pelanggaran: <span id="violation-count">0</span>/3</span>
                 </div>
-                <div class="flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-xl">
+                <div class="flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 px-3 py-1 rounded-xl">
                     <i class="fa-regular fa-clock text-indigo-600 text-xs"></i>
-                    <span id="timer-display" class="font-mono font-bold text-sm text-indigo-700">15:00</span>
+                    <span id="timer-display" class="font-mono font-bold text-xs sm:text-sm text-indigo-700">15:00</span>
                 </div>
             </div>
         </div>
@@ -746,6 +752,93 @@
         <span id="toast-message">Notifikasi</span>
     </div>
 
+    <!-- ================= FIREBASE CLOUD SYNC (LINTAS PERANGKAT HP & LAPTOP) ================= -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'ujianku-default-app';
+        let db = null;
+        let auth = null;
+        let cloudUser = null;
+
+        async function initCloudSync() {
+            const badge = document.getElementById('cloud-sync-badge');
+            try {
+                if (typeof __firebase_config === 'undefined') {
+                    if (badge) {
+                        badge.className = "text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-md";
+                        badge.innerHTML = '<i class="fa-solid fa-hard-drive text-[9px]"></i> Lokal';
+                    }
+                    return;
+                }
+
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    const cred = await signInWithCustomToken(auth, __initial_auth_token);
+                    cloudUser = cred.user;
+                } else {
+                    const cred = await signInAnonymously(auth);
+                    cloudUser = cred.user;
+                }
+
+                if (!cloudUser) return;
+
+                // Fungsi simpan state ke cloud agar tersinkron di HP siswa & laptop guru
+                window.syncStateToCloud = async function(collectionName, itemsArray) {
+                    if (!db || !cloudUser) return;
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'ujianku_store', collectionName);
+                        await setDoc(docRef, {
+                            itemsJson: JSON.stringify(itemsArray),
+                            updatedAt: Date.now()
+                        });
+                    } catch (err) {
+                        console.warn('Cloud write deferred:', err);
+                    }
+                };
+
+                // Dengarkan perubahan real-time dari perangkat lain (misal guru buat ujian di laptop -> langsung muncul di HP siswa)
+                const storeCol = collection(db, 'artifacts', appId, 'public', 'data', 'ujianku_store');
+                onSnapshot(storeCol, (snapshot) => {
+                    snapshot.forEach((docSnap) => {
+                        const key = docSnap.id;
+                        const data = docSnap.data();
+                        if (!data || !data.itemsJson) return;
+                        try {
+                            const parsed = JSON.parse(data.itemsJson);
+                            if (typeof window.applyRemoteState === 'function') {
+                                window.applyRemoteState(key, parsed);
+                            }
+                        } catch (e) {}
+                    });
+
+                    if (badge) {
+                        badge.className = "text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1";
+                        badge.innerHTML = '<i class="fa-solid fa-cloud-check text-[9px]"></i> Cloud Aktif';
+                    }
+                }, (error) => {
+                    if (badge) {
+                        badge.className = "text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-md";
+                        badge.innerHTML = '<i class="fa-solid fa-hard-drive text-[9px]"></i> Lokal';
+                    }
+                });
+            } catch (e) {
+                if (badge) {
+                    badge.className = "text-[10px] font-semibold bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-md";
+                    badge.innerHTML = '<i class="fa-solid fa-hard-drive text-[9px]"></i> Lokal';
+                }
+            }
+        }
+
+        initCloudSync();
+    </script>
+
     <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script>
         let isTeacherRegisterMode = false;
@@ -995,6 +1088,9 @@
 
         function saveData(key, val) {
             localStorage.setItem('ujianku_' + key, JSON.stringify(val));
+            if (typeof window.syncStateToCloud === 'function') {
+                window.syncStateToCloud(key, val);
+            }
         }
 
         let teachers = loadData('teachers', DEFAULT_TEACHERS);
@@ -1003,6 +1099,43 @@
         let exams = loadData('exams', DEFAULT_EXAMS);
         let submissions = loadData('submissions', []);
         let liveSessions = loadData('live', []);
+
+        // Dipanggil otomatis saat ada pembaruan data dari perangkat lain (HP <-> Laptop)
+        window.applyRemoteState = function(key, parsedItems) {
+            if (!Array.isArray(parsedItems)) return;
+            localStorage.setItem('ujianku_' + key, JSON.stringify(parsedItems));
+
+            if (key === 'teachers') teachers = parsedItems;
+            if (key === 'classes') {
+                classes = parsedItems;
+                checkUrlInvitation();
+            }
+            if (key === 'folders') folders = parsedItems;
+            if (key === 'exams') exams = parsedItems;
+            if (key === 'submissions') submissions = parsedItems;
+            if (key === 'live') liveSessions = parsedItems;
+
+            // Segarkan tampilan aktif secara otomatis tanpa mengganggu ujian yang sedang berjalan
+            if (currentUser && !isExamActive) {
+                if (currentUser.role === 'student') {
+                    // Perbarui referensi kelas jika siswa baru didaftarkan guru dari perangkat lain
+                    const myCls = classes.find(c => c.id === currentUser.classId) ||
+                                  classes.find(c => c.students.some(s => s.email.toLowerCase() === currentUser.email.toLowerCase()));
+                    if (myCls) {
+                        currentUser.classId = myCls.id;
+                        currentUser.className = myCls.name;
+                    }
+                    renderStudentPortal();
+                } else if (currentUser.role === 'teacher') {
+                    const liveTab = document.getElementById('teacher-tab-live');
+                    const classTab = document.getElementById('teacher-tab-classes');
+                    const reportTab = document.getElementById('teacher-tab-reports');
+                    if (liveTab && !liveTab.classList.contains('hidden')) renderTeacherLiveExam();
+                    if (classTab && !classTab.classList.contains('hidden')) renderTeacherClasses();
+                    if (reportTab && !reportTab.classList.contains('hidden')) renderTeacherReports();
+                }
+            }
+        };
 
         function persistAll() {
             saveData('teachers', teachers);
@@ -1018,8 +1151,8 @@
         let selectedEditorExamId = exams.length > 0 ? exams[0].id : null;
         let invitedClassId = null;
 
-        // Cek parameter undangan kelas dari URL (?joinClass=cls-xxx)
-        (function checkUrlInvitation() {
+        // Cek parameter undangan kelas dari URL (?joinClass=cls-xxx) - mendukung akses dari HP
+        function checkUrlInvitation() {
             try {
                 const params = new URLSearchParams(window.location.search);
                 const joinId = params.get('joinClass');
@@ -1036,7 +1169,8 @@
                     }
                 }
             } catch (e) {}
-        })();
+        }
+        checkUrlInvitation();
 
         // Helper mengurutkan siswa berdasarkan nomor absen secara numerik
         function sortStudentsByAbsen(studentList) {
@@ -1185,19 +1319,26 @@
                         return;
                     }
                     if (teachers.some(t => t.email.toLowerCase() === email)) {
-                        errBox.textContent = "Email guru sudah terdaftar!";
+                        errBox.textContent = "Email guru sudah terdaftar! Silakan Sign In menggunakan sandi Anda.";
                         errBox.classList.remove('hidden');
                         return;
                     }
+                    // Simpan sandi guru sesuai email ke penyimpanan lokal & cloud
                     const newTeacher = { email, pass, name };
                     teachers.push(newTeacher);
-                    persistAll();
+                    saveData('teachers', teachers);
                     errBox.classList.add('hidden');
                     currentUser = { role: 'teacher', email: newTeacher.email, name: newTeacher.name };
+                    showToast("Akun guru berhasil didaftarkan & sandi tersimpan.");
                 } else {
-                    const teacher = teachers.find(t => t.email.toLowerCase() === email && t.pass === pass);
+                    const teacher = teachers.find(t => t.email.toLowerCase() === email);
                     if (!teacher) {
-                        errBox.textContent = "Email atau kata sandi guru salah!";
+                        errBox.textContent = "Email guru belum terdaftar. Silakan klik 'Daftar di sini' terlebih dahulu.";
+                        errBox.classList.remove('hidden');
+                        return;
+                    }
+                    if (teacher.pass !== pass) {
+                        errBox.textContent = "Kata sandi yang Anda masukkan salah untuk email ini!";
                         errBox.classList.remove('hidden');
                         return;
                     }
